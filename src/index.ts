@@ -21,7 +21,8 @@ const dbUrl = process.env.DB_URL
 if (!dbUrl) {
     throw new Error("database url is required for this app to function");
 }
-const sequelize = new Sequelize(dbUrl)
+const isProduction = process.env.NODE_ENV == 'production'
+const sequelize = new Sequelize(dbUrl, {ssl: isProduction})
 setupDatabase(sequelize)
 
 app.use(cors(corsOptions));
