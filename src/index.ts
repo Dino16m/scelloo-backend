@@ -33,6 +33,7 @@ app.use("/users", userRouter)
 app.use("/leaves", reqRouter)
 
 const port = process.env.PORT
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
