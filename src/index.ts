@@ -24,7 +24,10 @@ if (!dbUrl) {
 const isProduction = process.env.NODE_ENV == 'production'
 
 const sequelize = new Sequelize(dbUrl, {dialectOptions:{
-    ssl: isProduction
+    ssl: {
+        require: isProduction,
+        rejectUnauthorized: false
+    }
 }})
 
 setupDatabase(sequelize)
