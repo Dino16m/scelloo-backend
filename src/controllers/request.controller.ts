@@ -19,9 +19,8 @@ reqRouter.post("/request",
         const userService = new UserService(user)
         const requestData = matchedData(req) as any
         const newRequest =   await userService.requestLeave(requestData)
-        const delegatee = {delegatee: await newRequest.getDelegatee() }
         res.status(200).send(
-            {status: true, data: {request: {...newRequest.toJSON(), ...delegatee} }}
+            {status: true, data: {request: newRequest}}
         )
 })
 
@@ -60,7 +59,7 @@ reqRouter.post(
 reqRouter.get(
     "/all",
     async  (req: Request, res: Response) => {
-        const allRequests = await LeaveRequest.findAll({include: 'delegatee'})
+        const allRequests = await LeaveRequest.findAll()
         res.send({status: true, data:{requests: allRequests}})
     }
 )

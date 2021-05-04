@@ -106,7 +106,10 @@ const init = (sequelize: Sequelize) => {
                 },
                 {
                   tableName: "requests",
-                  sequelize
+                  sequelize,
+                  defaultScope:{
+                      include: 'delegatee'
+                  }
                 }
             );
         },
