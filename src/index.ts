@@ -15,15 +15,13 @@ const frontendURL = process.env.CLIENT_URL || "http://localhost:8080" // default
 
 const corsOptions: CorsOptions = {origin: frontendURL, }
 
-const dbName = process.env.DB_DATABASE
-const dbPassword = process.env.DB_PASSWORD
-const dbUser = process.env.DB_USERNAME
-const dbHost = process.env.DB_HOST  
-const dbPort = process.env.DB_PORT
 
-const sequelize = new Sequelize(
-    `mysql://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`
-)
+
+const dbUrl = process.env.DB_URL
+if (!dbUrl) {
+    throw new Error("database url is required for this app to function");
+}
+const sequelize = new Sequelize(dbUrl)
 setupDatabase(sequelize)
 
 app.use(cors(corsOptions));
