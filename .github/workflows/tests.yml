@@ -27,5 +27,5 @@ jobs:
       - name: Run build commmand
         run: npm install && npm run build
 
-      - test: Run tests
+      - name: Run tests
       - run:  npm run test
