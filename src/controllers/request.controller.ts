@@ -19,8 +19,12 @@ reqRouter.post("/request",
         const userService = new UserService(user)
         const requestData = matchedData(req) as any
         const newRequest =   await userService.requestLeave(requestData)
+        const delegatee = await newRequest.getDelegatee()
+
+        const reqWithDelegatee = {...newRequest.toJSON(), delegatee: delegatee}
+
         res.status(200).send(
-            {status: true, data: {request: newRequest}}
+            {status: true, data: {request: reqWithDelegatee}}
         )
 })
 
@@ -87,5 +91,12 @@ reqRouter.get(
             return res.send({status: true, data: {leaveBalance: leaveBalance.balances}})
         }
         res.send({status: false, error: "user not found"})
+    }
+)
+
+reqRouter.post(
+    "/reset",
+    async  (req: Request, res: Response) => {
+        LeaveRequest.destroy({truncate: true})
     }
 )
