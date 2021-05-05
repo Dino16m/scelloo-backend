@@ -1,4 +1,4 @@
-![Tests](https://github.com/dino16m/scelloo-backend/actions/workflows/main.yml/badge.svg)
+![Tests](https://github.com/dino16m/scelloo-backend/actions/workflows/tests.yml/badge.svg)
 # Scelloo full stack developer backend task
 
 This is an implementation of the fullstack task provided by gokada and implemented by [dino16m](https://github.com/dino16m)
