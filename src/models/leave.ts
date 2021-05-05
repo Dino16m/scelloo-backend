@@ -98,7 +98,7 @@ export default class Leave{
     }
 
     
-    toJSON(key: any){
+    toJSON(key?: any){
         return {
             unpaid: this.unpaid,
             annual: this.annual,
@@ -106,8 +106,12 @@ export default class Leave{
             compassionate: this.compassionate
         }
     }
-
-    mutated(){
+    /**
+     * Sequelize getters always return a new value when called, without caching
+     *  this method below makes the ref(a sequelize model) to update the field
+     * tracked by this class.
+     */
+    private mutated(){
         this.ref.balances = this.toJSON("")
     }
 }
