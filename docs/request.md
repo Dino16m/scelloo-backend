@@ -21,6 +21,7 @@ Used to Create request.
     "delegateeId": number,
 }
 
+### Please use the name Chike Ogbonna as delegatee as it is the oonly delegatee seeded
 
 ## Success Response
 

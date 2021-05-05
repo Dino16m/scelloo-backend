@@ -45,7 +45,8 @@ const init = (sequelize: Sequelize) => {
                     get(){
                         const val = this.getDataValue("balances")
                         if(val){
-                            return Leave.Hydrate(JSON.parse(val as any), this)
+                            const value = typeof val == 'string' ? JSON.parse(val) : val
+                            return Leave.Hydrate(value, this)
                         }
                         return Leave.Hydrate({}, this)
                     },
