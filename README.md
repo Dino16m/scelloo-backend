@@ -24,6 +24,15 @@ npm run build
 npm run start
 ```
 
+## Frontend link
+
+https://dino16m.github.io/scelloo-frontend/#
+
+## Backend api link
+
+https://scelloo.herokuapp.com/
+
+
 ### Env Setup
 
 This app needs the following environmental variables set, in order to run, they are;
